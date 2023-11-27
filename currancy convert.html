@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .converter {
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 93%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h2>Currency Converter</h2>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <select id="fromCurrency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="GBP">INR</option>
+            <!-- Add more currency options as needed -->
+        </select>
+        <select id="toCurrency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="GBP">INR</option>
+            <!-- Add more currency options as needed -->
+        </select>
+        <button onclick="convertCurrency()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const fromCurrency = document.getElementById("fromCurrency").value;
+            const toCurrency = document.getElementById("toCurrency").value;
+
+            // You would fetch exchange rates from a currency API here.
+            // For simplicity, we'll use a fixed conversion rate for this example.
+            const exchangeRate = 1.2; // 1 USD to EUR, for example
+
+            const convertedAmount = (amount * exchangeRate).toFixed(2);
+
+            const result = `${amount} ${fromCurrency} is equal to ${convertedAmount} ${toCurrency}`;
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>
